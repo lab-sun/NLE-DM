@@ -1,6 +1,6 @@
 # NLE-DM
 The official implementation of NLE-DM.
-
+![schematic_diagram_network](./network.png)
 
 ## Environment setting：
 * Python 3.6 or higher
