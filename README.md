@@ -28,7 +28,52 @@ act_des_mobilenetS.pth: network to jointly predict actions and descriptions (bac
 act_des_mobilenetL.pth: network to jointly predict actions and descriptions (backbone: MobileNetV3_Large)
 ```
 
+## Usage
+* Clone this repo.
+```
+git clone 
+```
 
+* Download the dataset and put into the file of `Data`;
+```
+BDD10K for semantic segmentation
+BDD_OIA for jointly predict actions and explanations
+BDD_OIA10k for jointly predict actions and descriptions
+```
+* Download the pretrained weight and put into the file of `weight` (optional);
+
+* To train the network, select the appropriate .py in the folder of `train`
+```
+pre_train.py: To predict the semantic segmentation results.
+train_act_exp.py: 
+train_act_des.py:
+train_act_des_ablation.py:
+```
+* To produce the prediction results, select the appropriate .py in the folder of `predict`
+```
+pre_train.py: To train the deeplabv3 on BDD10K dataset.
+train_act_exp.py: To train the network to jointly predict actions and explanations.
+train_act_des.py: To train the network to jointly predict actions and descriptions.
+train_act_des_ablation.py: To train the network with diffrent combination of action and description.
+```
+
+## Note
+* Normally, the backbone is first pre-trained on BDD10K (using pre_train.py), 
+then load the pre-trained weight to train the network to jointly predict actions and descriptions/explanations. 
+* To accelerate training process for deeplabv3 on BDD10k dataset, 
+we recommend you to load the pre-trained deeplabv3 weights on COCO dataset.
+To download the weights, please refer to: 
+deeplabv3_resnet50: https://download.pytorch.org/models/deeplabv3_resnet50_coco-cd0a2569.pth
+deeplabv3_resnet101: https://download.pytorch.org/models/deeplabv3_resnet101_coco-586e9e4e.pth
+
+
+## Citation
+If you use our network or BDD_OIA10k dataset in an academic work, please cite:
+```
+bib tex
+```
+
+
+If you have any questions, pleas feel free to contact us!
 Contact: yx.sun@polyu.edu.hk
-
 Website: https://yuxiangsun.github.io/
