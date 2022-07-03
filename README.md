@@ -38,7 +38,7 @@ git clone
 ```
 BDD10K for semantic segmentation
 BDD_OIA for jointly predict actions and explanations
-BDD_OIA10k for jointly predict actions and descriptions
+BDD_AD for jointly predict actions and descriptions
 ```
 * Download the pretrained weight and put into the file of `weight` (optional);
 
@@ -52,7 +52,7 @@ train_act_des_ablation.py:
 * To produce the prediction results, select the appropriate .py in the folder of `predict`
 ```
 pre_train.py: To train the deeplabv3 on BDD10K dataset.
-train_act_exp.py: To train the network to jointly predict actions and explanations.
+train_act_rea.py: To train the network to jointly predict actions and reasons.
 train_act_des.py: To train the network to jointly predict actions and descriptions.
 train_act_des_ablation.py: To train the network with diffrent combination of action and description.
 ```
@@ -75,5 +75,7 @@ bib tex
 
 
 If you have any questions, pleas feel free to contact us!
+
 Contact: yx.sun@polyu.edu.hk
+
 Website: https://yuxiangsun.github.io/
