@@ -59,8 +59,8 @@ train_act_des_ablation.py: To train the network with diffrent combination of act
 
 ## Note
 * Normally, the backbone is first pre-trained on BDD10K (using pre_train.py), 
-then load the pre-trained weight to train the network to jointly predict actions and descriptions/explanations. 
-* To accelerate training process for deeplabv3 on BDD10k dataset, 
+then load the pre-trained weight to train the network to jointly predict actions and natural-language reasons/descriptions. 
+* To accelerate training process for pre-train on BDD10k dataset, 
 we recommend you to load the pre-trained deeplabv3 weights on COCO dataset.
 To download the weights, please refer to: 
 deeplabv3_resnet50: https://download.pytorch.org/models/deeplabv3_resnet50_coco-cd0a2569.pth
@@ -68,7 +68,7 @@ deeplabv3_resnet101: https://download.pytorch.org/models/deeplabv3_resnet101_coc
 
 
 ## Citation
-If you use our network or BDD_OIA10k dataset in an academic work, please cite:
+If you use our NEL-DM network or BDD_AD dataset in an academic work, please cite:
 ```
 bib tex
 ```
