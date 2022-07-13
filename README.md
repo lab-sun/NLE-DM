@@ -1,6 +1,6 @@
 # NLE-DM
 The official pytorch implementation of NLE-DM.
-![schematic_diagram_network](./network.png)
+The codes and dataset will be released when the paper is published.
 
 ## Environment setting：
 * Python 3.6 or higher
