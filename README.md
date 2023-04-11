@@ -3,12 +3,13 @@ The official pytorch implementation of NLE-DM.
 
 The codes and dataset will be released when the paper is published.
 
-## Environment setting：
-* Python 3.6 or higher
-* Pytorch 1.10 or higher
-* torchvision 0.11.1 or higher
-* numpy 1.21.3 or higher
-* See details in ```requirements.txt```
+## Set up：
+```
+git clone https://github.com/lab-sun/NLE-DM.git
+cd NLE_DM
+conda env create -f environment.yml --name NLE_DM
+conda activate NLE_DM
+```
 
 ## Dataset
 Download the datasets and then extract it in the file of `Data`
