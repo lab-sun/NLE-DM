@@ -13,7 +13,7 @@ conda activate NLE_DM
 * Download the dataset, release it and put into the file of `Data`;
 ```
 BDD10K for semantic segmentation
-BDD_OIA for jointly predict actions and explanations
+BDD_OIA for jointly predict actions and reasons
 BDD_AD for jointly predict actions and descriptions
 ```
 * Download the pretrained weight and put into the file of `weight` (optional);
@@ -30,7 +30,6 @@ train_act_des_ablation.py:
 pre_train.py: To train the deeplabv3 on BDD10K dataset.
 train_act_rea.py: To train the network to jointly predict actions and reasons.
 train_act_des.py: To train the network to jointly predict actions and descriptions.
-train_act_des_ablation.py: To train the network with diffrent combination of action and description.
 ```
 
 ## Dataset
