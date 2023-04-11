@@ -4,7 +4,7 @@ import torch
 from torch.utils.data import Dataset
 from PIL import Image
 import json
-from dataset import transform_bddoia as T
+from dataset import transform_bdd as T
 
 
 class BDD_AD(Dataset):
