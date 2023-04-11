@@ -68,7 +68,7 @@ deeplabv3_resnet101: https://download.pytorch.org/models/deeplabv3_resnet101_coc
 
 
 ## Citation
-If you use our NEL-DM network or BDD_AD dataset in an academic work, please cite:
+If you use our NEL-DM network or BDD-AD dataset in an academic work, please cite:
 ```
 bib tex
 ```
