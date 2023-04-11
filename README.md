@@ -1,6 +1,8 @@
 # NLE-DM
 The official pytorch implementation of NLE-DM (Natural-Language Explanations for Decision Making).
 
+![image](images/network.png)
+
 ## Usage
 * Clone this repo and prepare the environment.
 ```
@@ -10,13 +12,13 @@ conda env create -f environment.yml --name NLE_DM
 conda activate NLE_DM
 ```
 
-* Download the dataset, release it and put into the file of `Data`;
+* Download the dataset, create the foler `Data` and release it into the `Data`;
 ```
 BDD10K for the pre-training and obtain the semantic segmentation of road scene
 BDD_OIA for the Act-Rea sub-network (jointly predict actions and reasons)
 BDD_AD for the Act-Desc sub-network  (jointly predict actions and descriptions)
 ```
-* Download the pretrained weight and put into the file of `weight` (optional);
+* Download the pretrained weight, create the foler `weight` and put into the `weight` (optional);
 
 * To train the network, select the appropriate .py in the folder of `train`
 ```
@@ -31,7 +33,7 @@ predict_act_desc.py: To jointly predict the driving actions and environment desc
 ```
 
 ## Dataset (Download)
-Download the datasets and then extract it in the file of `Data`
+Download the datasets and then extract it in the folder of `Data`
 * For BDD_AD dataset, please refer to: https: //
 * For BDD100K dataset, please refer to: https://www.bdd100k.com/
 * For BDD_OIA dataset, please refer to: https://github.com/Twizwei/bddoia_project/blob/master/README.md
