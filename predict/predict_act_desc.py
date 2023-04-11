@@ -9,7 +9,7 @@ import torch
 import time
 from src import act_des_resnet50, act_des_resnet101, act_des_mobile_large, act_des_mobile_small
 from train_utils import evaluate
-from dataset.dataset_bddad import BDD_AD
+from dataset.dataset_bddad_predict import BDD_AD
 
 
 def create_model(arg, pretrain=True):
