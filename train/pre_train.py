@@ -11,9 +11,8 @@ import time
 import datetime
 import torch
 from src import deeplabv3_resnet50, deeplabv3_mobilenetv3_large
-from train_utils import pretrain_one_epoch, pre_evaluate, create_lr_scheduler
+from train_utils import pretrain_one_epoch, pre_evaluate, create_lr_scheduler, transforms as T
 from dataset.dataset_bdd10k import BDD10k
-import transforms as T
 
 class SegmentationPresetTrain:
     def __init__(self, base_size, crop_size, hflip_prob=0.5, mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225)):
