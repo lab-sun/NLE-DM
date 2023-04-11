@@ -1,3 +1,13 @@
+"""
+The BDD-OIA dataset is from the paper
+"Explainable Object-induced Action Decision for Autonomous Vehicles"
+The implementation of the dataloader is adapted from the code
+https://github.com/Twizwei/bddoia_project
+Please site this paper to use the BDD-OIA dataset or the code
+
+"""
+
+
 import os
 import numpy as np
 import torch
