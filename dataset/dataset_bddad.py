@@ -4,7 +4,8 @@ import torch
 from torch.utils.data import Dataset
 from PIL import Image
 import json
-import transform_bddoia as T
+from dataset import transform_bddoia as T
+
 
 class BDD_AD(Dataset):
     def __init__(self, Root, cropSize=(1280, 720), train_set=True):
