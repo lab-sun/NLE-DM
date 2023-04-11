@@ -25,7 +25,7 @@ def create_model(aux, num_classes: tuple, pretrain=True):
     2) change the path for weights
     """
     if pretrain:
-        weights_dict = torch.load("bdd10k_resnet50.pth", map_location='cpu') # load the pretrained weight
+        weights_dict = torch.load("../weights/bdd10k_resnet50.pth", map_location='cpu') # load the pretrained weight
         weights_dict = weights_dict["model"]
 
         missing_keys, unexpected_keys = model.load_state_dict(weights_dict, strict=False)
@@ -139,7 +139,7 @@ def parse_args():
     import argparse
     parser = argparse.ArgumentParser(description="pytorch deeplabv3 training")
 
-    parser.add_argument("--data-path", default="path for dataset")
+    parser.add_argument("--data-path", default="../data/BDD-AD/")
     parser.add_argument("--num-classes", default=(4, 6), help='the number of action and environment description/reason')
     parser.add_argument("--aux", default=False, type=bool, help="aux is turn off during whole training")
     parser.add_argument("--device", default="cuda:0", help="training device")
