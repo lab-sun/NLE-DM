@@ -15,7 +15,7 @@ import os.path as osp
 from PIL import Image
 import json
 import random
-import transform_bddoia as T
+from dataset import transform_bdd as T
 
 # For bdd-oia dateset
 class BddoiaDataset(Dataset):
