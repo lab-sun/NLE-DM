@@ -1,8 +1,6 @@
 # NLE-DM
 The official pytorch implementation of NLE-DM.
 
-The codes and dataset will be released when the paper is published.
-
 ## Set up：
 ```
 git clone https://github.com/lab-sun/NLE-DM.git
