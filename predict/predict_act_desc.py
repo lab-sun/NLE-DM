@@ -8,7 +8,7 @@ import datetime
 import torch
 import time
 from src import act_des_resnet50, act_des_resnet101, act_des_mobile_large, act_des_mobile_small
-from train_utils import evaluate_nu
+from train_utils import evaluate
 from dataset.dataset_bddad import BDD_AD
 
 
@@ -21,10 +21,10 @@ def create_model(arg, pretrain=True):
     # to produce the prediction result, the trained weight need to be load
     # set pretrain=True, change the weight path
     if pretrain:
-        weights_dict = torch.load("act_des_resnet50.pth", map_location='cpu')
+        weights_dict = torch.load("../weights/act_des_resnet50.pth", map_location='cpu')
         weights_dict = weights_dict["model"]
 
-        missing_keys, unexpected_keys = model.load_state_dict(weights_dict, strict=False)
+        missing_keys, unexpected_keys = model.load_state_dict(weights_dict, strict=True)
         if len(missing_keys) != 0 or len(unexpected_keys) != 0:
             print("missing_keys: ", missing_keys)
             print("unexpected_keys: ", unexpected_keys)
@@ -52,7 +52,7 @@ def main(args):
     start_time = time.time()
 
     val_loss, Action_overall, Reason_overall, f1_action, action_average, f1_reason, reason_average = \
-        evaluate_nu(model, test_loader, device=device)
+        evaluate(model, test_loader, device=device)
 
     val_info = """
             val loss: {0}.
@@ -79,7 +79,7 @@ def parse_args():
     import argparse
     parser = argparse.ArgumentParser(description="pytorch deeplabv3 training")
 
-    parser.add_argument("--data-path", default="path for dataset")
+    parser.add_argument("--data-path", default="path to the BDD-AD dataset")
     parser.add_argument("--num-classes", default=(4, 6), type=int)
     parser.add_argument("--aux", default=False, type=bool, help="auxilier loss")
     parser.add_argument("--device", default="cuda", help="training device")
