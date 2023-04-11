@@ -1,7 +1,8 @@
 # NLE-DM
 The official pytorch implementation of NLE-DM.
 
-## Set up：
+## Usage
+* Clone this repo and prepare the environment.
 ```
 git clone https://github.com/lab-sun/NLE-DM.git
 cd NLE_DM
@@ -9,32 +10,7 @@ conda env create -f environment.yml --name NLE_DM
 conda activate NLE_DM
 ```
 
-## Dataset
-Download the datasets and then extract it in the file of `Data`
-* For BDD_AD dataset, please refer to: https: //
-* For BDD100K dataset, please refer to: https://www.bdd100k.com/
-* For BDD_OIA dataset, please refer to: https://github.com/Twizwei/bddoia_project/blob/master/README.md
-
-## Pretrained weights：
-* Download the pretrained weights and then extract it in the file of `weight`
-* The link for pretrained weights is: https: //
-* The introduction for each weights is as follows:
-```
-deeplab_bdd10k: network to predict semantic segmentation on BDD10K
-act_rea.pth: network to jointly predict actions and reasons
-act_des_resnet50.pth: network to jointly predict actions and descriptions (backbone: ResNet 50)
-act_des_resnet101.pth: network to jointly predict actions and descriptions (backbone: ResNet 101)
-act_des_mobilenetS.pth: network to jointly predict actions and descriptions (backbone: MobileNetV3_Small)
-act_des_mobilenetL.pth: network to jointly predict actions and descriptions (backbone: MobileNetV3_Large)
-```
-
-## Usage
-* Clone this repo.
-```
-git clone 
-```
-
-* Download the dataset and put into the file of `Data`;
+* Download the dataset, release it and put into the file of `Data`;
 ```
 BDD10K for semantic segmentation
 BDD_OIA for jointly predict actions and explanations
@@ -55,6 +31,25 @@ pre_train.py: To train the deeplabv3 on BDD10K dataset.
 train_act_rea.py: To train the network to jointly predict actions and reasons.
 train_act_des.py: To train the network to jointly predict actions and descriptions.
 train_act_des_ablation.py: To train the network with diffrent combination of action and description.
+```
+
+## Dataset
+Download the datasets and then extract it in the file of `Data`
+* For BDD_AD dataset, please refer to: https: //
+* For BDD100K dataset, please refer to: https://www.bdd100k.com/
+* For BDD_OIA dataset, please refer to: https://github.com/Twizwei/bddoia_project/blob/master/README.md
+
+## Pretrained weights：
+* Download the pretrained weights and then extract it in the file of `weight`
+* The link for pretrained weights is: https: //
+* The introduction for each weights is as follows:
+```
+deeplab_bdd10k: network to predict semantic segmentation on BDD10K
+act_rea.pth: network to jointly predict actions and reasons
+act_des_resnet50.pth: network to jointly predict actions and descriptions (backbone: ResNet 50)
+act_des_resnet101.pth: network to jointly predict actions and descriptions (backbone: ResNet 101)
+act_des_mobilenetS.pth: network to jointly predict actions and descriptions (backbone: MobileNetV3_Small)
+act_des_mobilenetL.pth: network to jointly predict actions and descriptions (backbone: MobileNetV3_Large)
 ```
 
 ## Note
