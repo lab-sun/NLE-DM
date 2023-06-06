@@ -134,7 +134,7 @@ def parse_args():
     import argparse
     parser = argparse.ArgumentParser(description="pytorch deeplabv3 training")
 
-    parser.add_argument("--data-path", default="/workspace/dataset/BDD-OIA/lastframe/")
+    parser.add_argument("--data-path", default="/BDD-OIA/lastframe/")
     parser.add_argument("--num-classes", default=(4, 21), type=int)
     parser.add_argument("--aux", default=False, type=bool, help="auxilier loss")
     parser.add_argument("--device", default="cuda:1", help="training device")
