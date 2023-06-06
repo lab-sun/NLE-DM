@@ -61,7 +61,15 @@ deeplabv3_resnet101: https://download.pytorch.org/models/deeplabv3_resnet101_coc
 ## Citation
 If you use our NEL-DM network or BDD-AD dataset in an academic work, please cite:
 ```
-bib tex
+@ARTICLE{10144484,
+  author={Feng, Yuchao and Hua, Wei and Sun, Yuxiang},
+  journal={IEEE Transactions on Intelligent Transportation Systems}, 
+  title={NLE-DM: Natural-Language Explanations for Decision Making of Autonomous Driving Based on Semantic Scene Understanding}, 
+  year={2023},
+  volume={},
+  number={},
+  pages={1-12},
+  doi={10.1109/TITS.2023.3273547}}
 ```
 
 
