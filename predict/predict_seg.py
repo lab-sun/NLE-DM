@@ -1,5 +1,5 @@
 """
-To give prediction result of one example for deeplabv3 (with different backbones) on BDD10K.
+To give prediction result of one example for deeplabv3 on BDD10K.
 """
 
 import os
@@ -9,7 +9,7 @@ import torch
 from torchvision import transforms
 import numpy as np
 from PIL import Image
-from src import deeplabv3_resnet50, deeplabv3_resnet101, deeplabv3_mobilenetv3_small, deeplabv3_mobilenetv3_large
+from src import deeplabv3_resnet50
 
 def time_synchronized():
     torch.cuda.synchronize() if torch.cuda.is_available() else None
@@ -22,7 +22,7 @@ def main():
 
     # to produce the prediction result, the trained weight need to be load
     # change the weight path based on your file structure
-    weights_path = "../weight/xx.pth"
+    weights_path = "../weights/seg_weight/bdd10k_resnet50_1.pth"
 
     # To write the relative path for prediction picture
     img_path = "../xx.jpg"
