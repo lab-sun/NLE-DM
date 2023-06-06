@@ -1,5 +1,5 @@
 """
-To quantitatively evaluate the prediction performance of network that jointly predict action and description.
+To quantitatively evaluate the prediction performance of network that jointly predict action and environment description.
 The F1 score is used for evaluate the prediction performance.
 """
 
@@ -79,7 +79,7 @@ def parse_args():
     import argparse
     parser = argparse.ArgumentParser(description="pytorch deeplabv3 training")
 
-    parser.add_argument("--data-path", default="/workspace/dataset/BDD_AD")
+    parser.add_argument("--data-path", default="/BDD_AD")
     parser.add_argument("--num-classes", default=(4, 6), type=int)
     parser.add_argument("--aux", default=False, type=bool, help="auxilier loss")
     parser.add_argument("--device", default="cuda", help="training device")
