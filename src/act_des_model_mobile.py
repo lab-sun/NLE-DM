@@ -3,7 +3,6 @@ from typing import Dict, List
 import torch
 from torch import nn, Tensor
 from torch.nn import functional as F
-from .resnet_backbone import resnet50, resnet101
 from .mobilenet_backbone import mobilenet_v3_large, mobilenet_v3_small
 
 class IntermediateLayerGetter(nn.ModuleDict):
@@ -148,7 +147,7 @@ class DeeplabNeck(nn.Sequential):
             nn.Conv2d(256, 64, 3, padding=1, bias=False),
             nn.BatchNorm2d(64),
             nn.ReLU(),
-            nn.MaxPool2d(5), # for image in (1280*720)
+            nn.MaxPool2d(5),  # for image in (1280*720)
             nn.Flatten(),
             nn.Linear(64*16*9, 64, bias=True), # for mobilenet
         )
@@ -158,67 +157,10 @@ class ActionHead(nn.Sequential):
         super(ActionHead, self).__init__(nn.Linear(in_channels, action_classes, bias=True))
 
 class ReasonHead(nn.Sequential):
-    def __init__(self, in_channels=64, reason_classes=7):
+    def __init__(self, in_channels=64, reason_classes=6):
         super(ReasonHead, self).__init__(
             nn.Linear(in_channels, reason_classes, bias=True)
         )
-
-
-def act_des_resnet50(aux=False, num_classes=(4, 6), pretrain_backbone=False):
-    backbone = resnet50(replace_stride_with_dilation=[False, True, True])
-
-    if pretrain_backbone:
-        # load the pretrained weights of backbone, set as False
-        backbone.load_state_dict(torch.load("resnet50.pth", map_location='cpu'))
-
-    out_inplanes = 2048
-    aux_inplanes = 1024
-
-    return_layers = {'layer4': 'out'}
-    if aux:
-        return_layers['layer3'] = 'aux'
-    backbone = IntermediateLayerGetter(backbone, return_layers=return_layers)
-
-    aux_classifier = None
-    if aux:
-        # aux_classifier = FCNHead(aux_inplanes, num_classes)
-        pass
-    classifier = DeepLabHead(out_inplanes)
-    classifier_neck = DeeplabNeck()
-    classifier_action = ActionHead()
-    classifier_reason = ReasonHead()
-    model = DeepLabV3(backbone, classifier, classifier_neck, classifier_action, classifier_reason, aux_classifier)
-
-    return model
-
-def act_des_resnet101(aux, num_classes=(4,6), pretrain_backbone=False):
-
-    backbone = resnet101(replace_stride_with_dilation=[False, True, True])
-
-    if pretrain_backbone:
-        # load the pretrained weights of backbone, set as False
-        backbone.load_state_dict(torch.load("resnet101.pth", map_location='cpu'))
-
-    out_inplanes = 2048
-    aux_inplanes = 1024
-
-    return_layers = {'layer4': 'out'}
-    if aux:
-        return_layers['layer3'] = 'aux'
-    backbone = IntermediateLayerGetter(backbone, return_layers=return_layers)
-
-    aux_classifier = None
-    if aux:
-        aux_classifier = FCNHead(aux_inplanes, num_classes)
-
-    classifier = DeepLabHead(out_inplanes)
-    classifier_neck = DeeplabNeck()
-    classifier_action = ActionHead()
-    classifier_reason = ReasonHead()
-
-    model = DeepLabV3(backbone, classifier, classifier_neck, classifier_action, classifier_reason, aux_classifier)
-
-    return model
 
 def act_des_mobile_large(aux=False, num_classes=(4, 6), pretrain_backbone=False):
     backbone = mobilenet_v3_large(dilated=True)
