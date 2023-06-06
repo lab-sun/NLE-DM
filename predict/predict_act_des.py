@@ -79,10 +79,10 @@ def parse_args():
     import argparse
     parser = argparse.ArgumentParser(description="pytorch deeplabv3 training")
 
-    parser.add_argument("--data-path", default="/BDD_AD")
+    parser.add_argument("--data-path", default="BDD_AD")
     parser.add_argument("--num-classes", default=(4, 6), type=int)
     parser.add_argument("--aux", default=False, type=bool, help="auxilier loss")
-    parser.add_argument("--device", default="cuda", help="training device")
+    parser.add_argument("--device", default="cuda:1", help="evaluation device")
     parser.add_argument("-b", "--batch-size", default=1, type=int)
 
     parser.add_argument("--epochs", default=20, type=int, metavar="N",
