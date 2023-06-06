@@ -152,7 +152,6 @@ class DeeplabNeck(nn.Sequential):
             nn.MaxPool2d(5),
             nn.Flatten(),
             nn.Linear(64*32*18, 64, bias=True), # for resnet
-            # nn.Linear(64*16*9, 64, bias=True), # for mobilenet
         )
 
 class DeeplabNeck_small(nn.Sequential):
@@ -164,7 +163,6 @@ class DeeplabNeck_small(nn.Sequential):
             # nn.MaxPool2d(5),
             nn.Flatten(),
             nn.Linear(64*920, 64, bias=True), # for resnet
-            # nn.Linear(64*16*9, 64, bias=True), # for mobilenet
         )
 
 class ActionHead(nn.Sequential):
