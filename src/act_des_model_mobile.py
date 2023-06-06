@@ -148,14 +148,9 @@ class DeeplabNeck(nn.Sequential):
             nn.Conv2d(256, 64, 3, padding=1, bias=False),
             nn.BatchNorm2d(64),
             nn.ReLU(),
-            # nn.MaxPool2d(5), # for image in (1280*720)
-            # nn.MaxPool2d(2), # for image in (640*360)
+            nn.MaxPool2d(5), # for image in (1280*720)
             nn.Flatten(),
-            # nn.Linear(64*32*18, 64, bias=True), # for resnet
-            # nn.Linear(64*16*9, 64, bias=True), # for mobilenet
-            # nn.Linear(64*20*11, 64, bias=True),  # for mobilenet in image of (640*320)
-            nn.Linear(64*20*12, 64, bias=True),  # for mobilenet in image of (320*160)
-
+            nn.Linear(64*16*9, 64, bias=True), # for mobilenet
         )
 
 class ActionHead(nn.Sequential):
