@@ -169,7 +169,7 @@ def parse_args():
     import argparse
     parser = argparse.ArgumentParser(description="pytorch deeplabv3 training")
 
-    parser.add_argument("--data-path", default="/BDD/", help="Subset of BDD100K")
+    parser.add_argument("--data-path", default="/BDD/", help="Path for the BDD10K")
     parser.add_argument("--num-classes", default=19, type=int)
     parser.add_argument("--aux", default=False, type=bool,
                         help="The aux is turned off during the whole training")
