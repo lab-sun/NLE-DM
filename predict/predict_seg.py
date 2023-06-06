@@ -43,9 +43,6 @@ def main():
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     print("using {} device.".format(device))
 
-    # create model with different backbone
-    # act_des_resnet50: ResNet50; act_des_resnet101: ResNet101;
-    # act_des_mobile_large: MobilenetV3_Large; act_des_mobile_small: MobilenetV3_Small
     model = deeplabv3_resnet50(aux=aux, num_classes=classes)
 
     # delete weights about aux_classifier
