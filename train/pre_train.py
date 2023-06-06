@@ -8,7 +8,7 @@ import os
 import time
 import datetime
 import torch
-from src import deeplabv3_resnet50
+from src import deeplabv3_resnet50, deeplabv3_mobilenetv3_large, deeplabv3_resnet101, deeplabv3_mobilenetv3_small
 from train_utils import pretrain_one_epoch, pre_evaluate, create_lr_scheduler
 import transforms as T
 from dataset.dataset_bdd10k import BDD10k
@@ -157,7 +157,7 @@ def main(args):
                      "args": args}
         if args.amp:
             save_file["scaler"] = scaler.state_dict()
-        torch.save(save_file, "../pretrain_weights/model_{}.pth".format(epoch))
+        torch.save(save_file, "../pretrain/model_{}.pth".format(epoch))
 
     total_time = time.time() - start_time
     total_time_str = str(datetime.timedelta(seconds=int(total_time)))
@@ -169,12 +169,12 @@ def parse_args():
     import argparse
     parser = argparse.ArgumentParser(description="pytorch deeplabv3 training")
 
-    parser.add_argument("--data-path", default="/BDD/", help="Path for the BDD10K")
+    parser.add_argument("--data-path", default="/BDD", help="Path for the BDD10K")
     parser.add_argument("--num-classes", default=19, type=int)
     parser.add_argument("--aux", default=False, type=bool,
                         help="The aux is turned off during the whole training")
     parser.add_argument("--device", default="cuda:1", help="training device")
-    parser.add_argument("-b", "--batch-size", default=28, type=int)
+    parser.add_argument("-b", "--batch-size", default=20, type=int)
     parser.add_argument("--epochs", default=100, type=int, metavar="N",
                         help="number of total epochs to train")
     parser.add_argument('--lr', default=0.01, type=float, help='initial learning rate')
@@ -197,7 +197,7 @@ def parse_args():
 if __name__ == '__main__':
     args = parse_args()
 
-    if not os.path.exists("../debug_pretrain"):
-        os.mkdir("../debug_pretrain")
+    if not os.path.exists("../pretrain"):
+        os.mkdir("../pretrain")
 
     main(args)
