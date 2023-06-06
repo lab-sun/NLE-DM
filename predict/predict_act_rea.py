@@ -17,7 +17,7 @@ def create_model(aux, num_classes: tuple, pretrain=True):
     # to produce the prediction result, the trained weight need to be load
     # set pretrain=True, change the weight path
     if pretrain:
-        weights_dict = torch.load("/weights/act_rea/act_rea_resnet50.pth", map_location='cpu')
+        weights_dict = torch.load("../weights/act_rea/act_rea_resnet50.pth", map_location='cpu')
         weights_dict = weights_dict["model"]
 
         missing_keys, unexpected_keys = model.load_state_dict(weights_dict, strict=False)
@@ -74,10 +74,10 @@ def parse_args():
     import argparse
     parser = argparse.ArgumentParser(description="pytorch deeplabv3 training")
 
-    parser.add_argument("--data-path", default="/BDD-OIA/lastframe")
+    parser.add_argument("--data-path", default="/BDD-OIA/lastframe/")
     parser.add_argument("--num-classes", default=(4, 21), type=int)
     parser.add_argument("--aux", default=False, type=bool, help="auxilier loss")
-    parser.add_argument("--device", default="cuda:0", help="training device")
+    parser.add_argument("--device", default="cuda:1", help="training device")
     parser.add_argument("-b", "--batch-size", default=1, type=int)
     parser.add_argument("--epochs", default=20, type=int, metavar="N",
                         help="number of total epochs to train")
