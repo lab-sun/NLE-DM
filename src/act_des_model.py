@@ -4,7 +4,6 @@ import torch
 from torch import nn, Tensor
 from torch.nn import functional as F
 from .resnet_backbone import resnet50, resnet101
-from .mobilenet_backbone import mobilenet_v3_large, mobilenet_v3_small
 
 class IntermediateLayerGetter(nn.ModuleDict):
 
@@ -251,65 +250,6 @@ def act_des_resnet101(aux, num_classes=(4,6), pretrain_backbone=False):
     aux_classifier = None
     if aux:
         aux_classifier = FCNHead(aux_inplanes, num_classes)
-
-    classifier = DeepLabHead(out_inplanes)
-    classifier_neck = DeeplabNeck()
-    classifier_action = ActionHead()
-    classifier_reason = ReasonHead()
-
-    model = DeepLabV3(backbone, classifier, classifier_neck, classifier_action, classifier_reason, aux_classifier)
-
-    return model
-
-def act_des_mobile_large(aux=False, num_classes=(4, 6), pretrain_backbone=False):
-    backbone = mobilenet_v3_large(dilated=True)
-
-    if pretrain_backbone:
-        # load the pretrained weights of backbone, set as False
-        backbone.load_state_dict(torch.load("mobilenet_v3_large.pth", map_location='cpu'))
-    backbone = backbone.features
-
-    stage_indices = [0] + [i for i, b in enumerate(backbone) if getattr(b, "is_strided", False)] + [len(backbone) - 1]
-    out_pos = stage_indices[-1]  # use C5 which has output_stride = 16
-    out_inplanes = backbone[out_pos].out_channels
-    return_layers = {str(out_pos): "out"}
-    if aux:
-        pass
-
-    backbone = IntermediateLayerGetter(backbone, return_layers=return_layers)
-    aux_classifier = None
-    if aux:
-        pass
-
-    classifier = DeepLabHead(out_inplanes)
-    classifier_neck = DeeplabNeck()
-    classifier_action = ActionHead()
-    classifier_reason = ReasonHead()
-
-    model = DeepLabV3(backbone, classifier, classifier_neck, classifier_action, classifier_reason, aux_classifier)
-
-    return model
-
-
-def act_des_mobile_small(aux=False, num_classes=(4, 6), pretrain_backbone=False):
-    backbone = mobilenet_v3_small(dilated=True)
-
-    if pretrain_backbone:
-        # load the pretrained weights of backbone, set as False
-        backbone.load_state_dict(torch.load("mobilenet_v3_large.pth", map_location='cpu'))
-    backbone = backbone.features
-
-    stage_indices = [0] + [i for i, b in enumerate(backbone) if getattr(b, "is_strided", False)] + [len(backbone) - 1]
-    out_pos = stage_indices[-1]  # use C5 which has output_stride = 16
-    out_inplanes = backbone[out_pos].out_channels
-    return_layers = {str(out_pos): "out"}
-    if aux:
-        pass
-
-    backbone = IntermediateLayerGetter(backbone, return_layers=return_layers)
-    aux_classifier = None
-    if aux:
-        pass
 
     classifier = DeepLabHead(out_inplanes)
     classifier_neck = DeeplabNeck()
