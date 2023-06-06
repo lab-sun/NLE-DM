@@ -54,11 +54,11 @@ def get_transform(train):
     return SegmentationPresetTrain(base_size, crop_size) if train else SegmentationPresetEval(base_size)
 
 
-def create_model(aux, num_classes, pretrain=True):
+def create_model(aux, num_classes, pretrain=False):
     model = deeplabv3_mobilenetv3_large(aux=aux, num_classes=num_classes)
 
     if pretrain:
-        weights_dict = torch.load("../weight/deeplabv3_mobilenet_v3_large.pth", map_location='cpu')
+        weights_dict = torch.load("", map_location='cpu')
 
         if num_classes != 21:
             # The category for VOC is 21(including background)
