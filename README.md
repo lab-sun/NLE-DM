@@ -43,12 +43,9 @@ Download the datasets and then extract it in the folder of `Data`
 * The link for pretrained weights is: https: //
 * The introduction for each weights is as follows:
 ```
-deeplab_bdd10k: weight of pre-training on BDD10K
-act_rea.pth: weight of Act-Rea sub-network
+bdd10k_resnet50_1.pth: weight of pre-training on BDD10K
+act_rea_resnet50.pth: weight of Act-Rea sub-network
 act_des_resnet50.pth: weight of Act-Desc sub-network (backbone: ResNet 50)
-act_des_resnet101.pth: weight of Act-Desc sub-network (backbone: ResNet 101)
-act_des_mobilenetS.pth: weight of Act-Desc sub-network (backbone: MobileNetV3_Small)
-act_des_mobilenetL.pth: weight of Act-Desc sub-network (backbone: MobileNetV3_Large)
 ```
 
 ## Note
