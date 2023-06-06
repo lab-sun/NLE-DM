@@ -34,7 +34,7 @@ predict_act_desc.py: To jointly predict the driving actions and environment desc
 
 ## Dataset (Download)
 Download the datasets and then extract it in the folder of `Data`
-* For BDD_AD dataset, please refer to: https: //
+* For BDD_AD dataset, please refer to: https: https://drive.google.com/file/d/1NIxloPvfsr4RvN2WjWg96jyd87PUC8e4/view?usp=drive_link
 * For BDD100K dataset, please refer to: https://www.bdd100k.com/
 * For BDD_OIA dataset, please refer to: https://github.com/Twizwei/bddoia_project/blob/master/README.md
 
