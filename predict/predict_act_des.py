@@ -16,12 +16,12 @@ def create_model(arg, pretrain=True):
     # To change model with different backbone.
     # act_des_resnet50: ResNet50; act_des_resnet101: ResNet101;
     # act_des_mobile_large: MobilenetV3_Large; act_des_mobile_small: MobilenetV3_Small
-    model = act_des_resnet50(arg)
+    model = act_des_mobile_large(arg)
 
     # to produce the prediction result, the trained weight need to be load
     # set pretrain=True, change the weight path
     if pretrain:
-        weights_dict = torch.load("../weights/act_desc/act_des_resnet50.pth", map_location='cpu')
+        weights_dict = torch.load("../weights/act_desc/act_des_mobilenetL.pth", map_location='cpu')
         weights_dict = weights_dict["model"]
 
         missing_keys, unexpected_keys = model.load_state_dict(weights_dict, strict=False)
@@ -62,8 +62,7 @@ def main(args):
             Overall F1 for description: {4}.
             Mean F1 action: {5}.
             Mean F1 for description: {6}.        
-            """.format(str(val_loss), str(Action_overall), str(Reason_overall), str(f1_action), str(action_average),
-                       str(f1_reason), str(reason_average))
+            """.format(str(val_loss), str(f1_action), str(f1_reason), str(Action_overall), str(Reason_overall), str(action_average), str(reason_average))
     print(val_info)
 
     total_time = time.time() - start_time
