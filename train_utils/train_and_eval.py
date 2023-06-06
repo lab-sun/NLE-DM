@@ -12,10 +12,10 @@ from sklearn.metrics import f1_score
 def criterion(input1, input2, target1, target2, device):
     losses = {}
     """
-    for network to jointly predict action and explanation, class_weights=[1, 1, 2, 2];
+    for network to jointly predict action and reason, class_weights=[1, 1, 2, 2];
     for network to jointly predict action and description, class_weights=[1, 3, 2, 2]
     """
-    class_weights1 = [1, 1, 2, 2]  # for act_exp
+    class_weights1 = [1, 1, 2, 2]  # for act_rea
     # class_weights = [1, 3, 2, 2] # for act_des
     w1 = torch.FloatTensor(class_weights1).to(device)
 
