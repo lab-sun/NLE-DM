@@ -58,7 +58,7 @@ def create_model(aux, num_classes, pretrain=True):
     model = deeplabv3_mobilenetv3_large(aux=aux, num_classes=num_classes)
 
     if pretrain:
-        weights_dict = torch.load("../deeplabv3_mobilenet_v3_large.pth", map_location='cpu')
+        weights_dict = torch.load("../weight/deeplabv3_mobilenet_v3_large.pth", map_location='cpu')
 
         if num_classes != 21:
             # The category for VOC is 21(including background)
@@ -171,7 +171,7 @@ def parse_args():
     import argparse
     parser = argparse.ArgumentParser(description="pytorch deeplabv3 training")
 
-    parser.add_argument("--data-path", default="/workspace/dataset/BDD/", help="Subset of BDD100K")
+    parser.add_argument("--data-path", default="/BDD/", help="Subset of BDD100K")
     parser.add_argument("--num-classes", default=19, type=int)
     parser.add_argument("--aux", default=False, type=bool,
                         help="The aux is turned off during the whole training")
