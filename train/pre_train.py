@@ -1,8 +1,6 @@
 """
 This script is to train the DeeplabV3 on BDD10K dataset.
-In this script, the relative path for dataset is : '../Data/BDD10K/';
-the relative path for pretrained weights is: '../weight/deeplab_bdd10k.pth'
-Please change both two paths according to your file structure.
+Please change the path for the dataset according to your file structure.
 """
 
 
@@ -10,7 +8,7 @@ import os
 import time
 import datetime
 import torch
-from src import deeplabv3_mobilenetv3_large
+from src import deeplabv3_resnet50
 from train_utils import pretrain_one_epoch, pre_evaluate, create_lr_scheduler
 import transforms as T
 from dataset.dataset_bdd10k import BDD10k
@@ -55,7 +53,7 @@ def get_transform(train):
 
 
 def create_model(aux, num_classes, pretrain=False):
-    model = deeplabv3_mobilenetv3_large(aux=aux, num_classes=num_classes)
+    model = deeplabv3_resnet50(aux=aux, num_classes=num_classes)
 
     if pretrain:
         weights_dict = torch.load("", map_location='cpu')
