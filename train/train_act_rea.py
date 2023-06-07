@@ -1,7 +1,7 @@
 """
 This script is to train the network to jointly predict actions and reasons.
-In this script, the relative path for dataset is : '../Data/BDD_OIA/',
-Please change both two paths according to your file structure.
+The dataset for the Act-Des subnetwork is BDD-OIA.
+Please change the data path according to your file structure.
 """
 
 import os
@@ -21,7 +21,7 @@ def create_model(aux, num_classes: tuple, pretrain=True):
     2) change the path for weights
     """
     if pretrain:
-        weights_dict = torch.load("../seg_weight/bdd10k_resnet50_1.pth", map_location='cpu')
+        weights_dict = torch.load("../weights/seg_weight/bdd10k_resnet50_1.pth", map_location='cpu')
         weights_dict = weights_dict["model"]
 
         missing_keys, unexpected_keys = model.load_state_dict(weights_dict, strict=False)
@@ -122,7 +122,7 @@ def main(args):
                      "args": args}
         if args.amp:
             save_file["scaler"] = scaler.state_dict()
-        torch.save(save_file, "./bddoia_weights/model_{}.pth".format(epoch))
+        torch.save(save_file, "../act-rea/model_{}.pth".format(epoch))
 
     total_time = time.time() - start_time
     total_time_str = str(datetime.timedelta(seconds=int(total_time)))
@@ -137,7 +137,7 @@ def parse_args():
     parser.add_argument("--data-path", default="/BDD-OIA/lastframe/")
     parser.add_argument("--num-classes", default=(4, 21), type=int)
     parser.add_argument("--aux", default=False, type=bool, help="auxilier loss")
-    parser.add_argument("--device", default="cuda:1", help="training device")
+    parser.add_argument("--device", default="cuda:0", help="training device")
     parser.add_argument("-b", "--batch-size", default=2, type=int)
 
     parser.add_argument("--epochs", default=100, type=int, metavar="N",
@@ -164,7 +164,7 @@ def parse_args():
 if __name__ == '__main__':
     args = parse_args()
 
-    if not os.path.exists("./act-rea"):
-        os.mkdir("./act-rea")
+    if not os.path.exists("../act-rea"):
+        os.mkdir("../act-rea")
 
     main(args)
