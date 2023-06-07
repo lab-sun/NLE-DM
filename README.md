@@ -40,7 +40,7 @@ Download the datasets and then extract it in the folder of `Data`
 
 ## Pretrained weights (Download)
 * Download the pretrained weights and then extract it in the file of `weight`
-* The link for pretrained weights is: https: //
+* The link for pretrained weights is: https://drive.google.com/file/d/1yi-MLL2ry96ChS1hrVp61biEBYxkEW2p/view?usp=drive_link
 * The introduction for each weights is as follows:
 ```
 bdd10k_resnet50_1.pth: weight of pre-training on BDD10K
