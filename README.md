@@ -71,10 +71,3 @@ If you use our NEL-DM network or BDD-AD dataset in an academic work, please cite
   pages={1-12},
   doi={10.1109/TITS.2023.3273547}}
 ```
-
-
-If you have any questions, pleas feel free to contact us!
-
-Contact: yx.sun@polyu.edu.hk
-
-Website: https://yuxiangsun.github.io/
